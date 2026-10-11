@@ -1,0 +1,32 @@
+def calc_change(open_price, close_price):
+    return close_price - open_price
+
+def calc_percent_change(open_price, close_price):
+        change = close_price - open_price
+        return (change / open_price) * 180
+
+def get_market_status(change):
+    if change > 0:
+         return "GAIN"
+    elif change < 0:
+         return "LOSS"
+    else:
+         return "NO CHANGE"
+
+def display_summary(stock_name, open_price, close_price, change, percent_change, status):
+     print()
+     print("DAILY STOCK SUMMARY")
+     print(f"Stock: {stock_name}")
+     print(f"Price Change: {change}")
+     print(f"Percent Change: {percent_change}&")
+     print(f"Status: {status}")
+
+stock_name = input("Enter stock name: ")
+open_price = float(input("Enter opening price: "))
+close_price = float(input("Enter closing price: "))
+
+change = calc_change(open_price, close_price)
+percent_change = calc_percent_change(open_price, close_price)
+status = get_market_status(change)
+
+display_summary(stock_name, open_price, close_price, change, percent_change, status)
